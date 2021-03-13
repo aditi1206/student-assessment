@@ -1,6 +1,6 @@
 # Directories
 venv
-assets
+students_assessments/assets
 dev
 media
 .idea

@@ -2,6 +2,7 @@
 import os
 from students_assessments.constants import CSV_EXTENSION, APP_DIRS, CLASS_DATA_FILES_PATH
 
+
 # TODO: Convert Functions to a Class
 
 
@@ -53,5 +54,5 @@ def create_dir(dir_path):
 
 
 if __name__ == '__main__':
-    files_list = get_files(current_working_directory=CLASS_DATA_FILES_PATH, extension=CSV_EXTENSION)
+    files_ls = get_files(current_working_directory=CLASS_DATA_FILES_PATH, extension=CSV_EXTENSION)
     create_dir(dir_path=APP_DIRS)

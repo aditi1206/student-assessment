@@ -5,5 +5,7 @@ The names of students who were discarded from consideration: {discarded_students
 Class Average: {class_average}
 Additional Data:
 {additional_data}
-{highest_average}
+{highest_average_class}
 {new_lines}
+=======================================================================================
+

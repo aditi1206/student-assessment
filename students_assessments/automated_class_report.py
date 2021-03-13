@@ -84,9 +84,10 @@ def process_students_score(data, file):
             'discarded_students': discarded_students,
             'truncated_scores': truncate_scores,
             'class_average': class_average,
-            'highest_average': '',
+            'highest_average_class': '',
             'additional_data': '',
-            'data': add_students_data_template(data=data),  # Additional Data if we want to append
+            # 'data': add_students_data_template(data=data),  # Additional Data if we want to append
+            'average_all_classes_students': '',
             'new_lines': '\n'})
     except Exception as e:
         print(e)
@@ -109,23 +110,40 @@ def calculate_highest_average(data):
     for d in data:
         class_averages.update({d.get('class_name'): d.get('class_average')})
     highest_average_class = max(class_averages, key=class_averages.get)
+    average_all_classes_students = get_average_class_score(scores=list(class_averages.values()))
     for d in data:
         if d.get('class_name') == highest_average_class:
-            d.update({'highest_average': '\n*** {class_name} Highest Class Average compared to others ***\n'
-                                         ''.format(class_name=d.get('class_name'))})
+            d.update({'highest_average_class': '\n*** \n{class_name} Highest Class Average compared to others \n***\n'
+                                               ''.format(class_name=d.get('class_name'))})
+        d.update({'average_all_classes_students': average_all_classes_students})
     return data
 
 
 def execute():
-    # GET FILES
-    get_csv_files = get_files(current_working_directory=CLASS_DATA_FILES_PATH,
-                              extension=CSV_EXTENSION)
-    class_details_list = process_student_progress(files_path=CLASS_DATA_FILES_PATH, files=get_csv_files)
-    # CALCULATE HIGHEST CLASS AVERAGE
-    calculate_highest_average(data=class_details_list)
-    # RENDER TEMPLATE
-    rendered_data = render_template(class_details=class_details_list, template_path=TEMPLATE_PATH)
-    generate_output(data=rendered_data, file_path=OUTPUT_FILE_NAME)
+    """
+    Execute
+    :return: {str} Success
+    """
+    response = False
+    try:
+
+        # GET FILES
+
+        get_csv_files = get_files(current_working_directory=CLASS_DATA_FILES_PATH,
+                                  extension=CSV_EXTENSION)
+        # PROCESS STUDENTS INFORMATION
+        class_details_list = process_student_progress(files_path=CLASS_DATA_FILES_PATH, files=get_csv_files)
+        # CALCULATE HIGHEST CLASS AVERAGE
+        data = calculate_highest_average(data=class_details_list)
+        from pprint import pprint
+        pprint(data)
+        # RENDER TEMPLATE
+        rendered_data = render_template(class_details=data, template_path=TEMPLATE_PATH)
+        generate_output(data=rendered_data, file_path=OUTPUT_FILE_NAME)
+        response = True
+    except Exception as e:
+        print(e)
+    return response
 
 
 if __name__ == '__main__':
