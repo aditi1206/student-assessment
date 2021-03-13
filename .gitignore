@@ -1,6 +1,6 @@
 # Directories
 venv
-assets
+#assets
 dev
 media
 .idea
