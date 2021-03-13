@@ -56,7 +56,12 @@ You can create a virtual environment if you would like to
 
 
 ### Execution
+The Files Path for the Input CSV Files need to be in the Root of the Project,
+you can specify an Environmental Variable for the path "FILES_PATH"
+
+```markdown
 python students_assessments/run.py
+```
 
 
 

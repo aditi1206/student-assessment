@@ -6,7 +6,7 @@ ROOT_DIR = os.getcwd()
 DATE_TIME_FORMAT = '%m-%d-%YT%H:%M:%S'
 DATE_TIME = datetime.now().strftime(DATE_TIME_FORMAT)
 
-CLASS_DATA_FILES_PATH = os.environ.get('FILES_PATH', r'assets')
+CLASS_DATA_FILES_PATH = os.environ.get('FILES_PATH', os.path.join(ROOT_DIR, '..', r'../assets'))
 CSV_EXTENSION = '.csv'
 
 OUTPUT_PATH = os.path.join(ROOT_DIR, '..', r'output')
