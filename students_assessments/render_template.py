@@ -10,6 +10,6 @@ def read_template(path):
 def generate_output(data, file_path='Students Data.txt'):
     with open(file_path, 'w') as fp:
         fp.write(data)
-    return
+    return "DONE"
 
 

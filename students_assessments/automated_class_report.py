@@ -5,11 +5,13 @@ import pandas as pd
 import numpy as np
 import statistics
 from utils.directory_management import create_dir, get_files
-from constants import APP_DIRS,  CLASS_DATA_FILES_PATH, CSV_EXTENSION
+from constants import APP_DIRS,  CLASS_DATA_FILES_PATH, CSV_EXTENSION, OUTPUT_FILE_NAME
+from render_template import generate_output
 
 """
 SETUP
 """
+
 """CREATE APP DIRECTORIES"""
 # Create Output Folder
 create_dir(dir_path=APP_DIRS)
@@ -44,14 +46,8 @@ def truncate_students_score(score=0):
 
 """READ CSV DATA"""
 
+
 def get_average_class_score(scores):
-    # data = np.array(scores, dtype=float)
-    # data[data == 0] = np.nan
-    # print(data)
-    # print(type(data))
-    # print("Shape of array is", data.shape)
-    #
-    # mean = np.nanmean(np.array(data))
     return scores
 
 
@@ -77,7 +73,7 @@ def process_student_progress(files_path, files):
         print('\n')
         return '{}{}'.format(students_scores, rounded_class_average)
     class_details = {
-        'class_name': file,
+        'class_name': 'Class A',
         'students_count': 10,
         'number_of_students_score': '9',
         'discarded_students': ['Edith Adkins'],
@@ -88,3 +84,7 @@ def process_student_progress(files_path, files):
 data_frame = process_student_progress(files_path=CLASS_DATA_FILES_PATH, files=get_csv_files)
 
 
+"""
+RENDER TEMPLATE
+"""
+generate_output(data=data_frame, file_path=OUTPUT_FILE_NAME)
