@@ -30,3 +30,36 @@ pip3 install --upgrade setuptools
 pip3 install pytest
 pip3 install virtualenv
 ```
+
+
+
+# OUTPUT
+                ClassA
+Total number of students within the class: 10
+The number of students used to calculate the class average: 9
+The names of students who were discarded from consideration: ['Edith Adkins']
+Class Average: 79.4
+Additional Data:
+
+
+
+
+                ClassB
+Total number of students within the class: 10
+The number of students used to calculate the class average: 10
+The names of students who were discarded from consideration: []
+Class Average: 80.2
+Additional Data:
+
+
+*** ClassB Highest Class Average compared to others ***
+
+
+
+                ClassC
+Total number of students within the class: 10
+The number of students used to calculate the class average: 10
+The names of students who were discarded from consideration: []
+Class Average: 80.1
+Additional Data:
+
