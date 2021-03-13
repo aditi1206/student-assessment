@@ -128,18 +128,21 @@ def execute():
     try:
 
         # GET FILES
-
         get_csv_files = get_files(current_working_directory=CLASS_DATA_FILES_PATH,
                                   extension=CSV_EXTENSION)
+
         # PROCESS STUDENTS INFORMATION
         class_details_list = process_student_progress(files_path=CLASS_DATA_FILES_PATH, files=get_csv_files)
+
         # CALCULATE HIGHEST CLASS AVERAGE
         data = calculate_highest_average(data=class_details_list)
-        from pprint import pprint
-        pprint(data)
+
         # RENDER TEMPLATE
         rendered_data = render_template(class_details=data, template_path=TEMPLATE_PATH)
+
+        # GENERATE OUTPUT FILE
         generate_output(data=rendered_data, file_path=OUTPUT_FILE_NAME)
+
         response = True
     except Exception as e:
         print(e)
