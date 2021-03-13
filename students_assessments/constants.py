@@ -15,4 +15,4 @@ OUTPUT_FILE_NAME = os.environ.get('OUTPUT_FILES_PATH', os.path.join(OUTPUT_PATH,
 
 APP_DIRS = [OUTPUT_PATH]
 
-TEMPLATE_PATH = os.environ.get('OUTPUT_FILES_PATH', os.path.join(ROOT_DIR, 'students_data_template.txt'))
+TEMPLATE_PATH = os.environ.get('OUTPUT_FILES_PATH', os.path.join(ROOT_DIR, 'templates/students_data_template.txt'))
