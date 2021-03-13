@@ -1,5 +1,9 @@
-{class_name}
+                {class_name}
 Total number of students within the class: {students_count}
 The number of students used to calculate the class average: {number_of_students_score}
 The names of students who were discarded from consideration: {discarded_students}
+Class Average: {class_average}
+Additional Data:
+{additional_data}
+{highest_average}
 {new_lines}

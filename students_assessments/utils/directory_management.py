@@ -26,7 +26,7 @@ def get_files(current_working_directory, extension=CSV_EXTENSION):
     except Exception as e:
         print(e)
     print('FILES LIST WITH EXTENSION: {}'.format(files_list))
-    return files_list
+    return sorted(files_list)
 
 
 def create_dir(dir_path):
